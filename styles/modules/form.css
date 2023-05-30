@@ -1,5 +1,5 @@
 .form {
-  @apply flex w-80 flex-col rounded-md bg-white p-6 shadow-lg;
+  @apply flex w-full flex-col;
 }
 
 .form_input {
@@ -11,11 +11,22 @@
 }
 
 .m_input {
-  @apply mt-1 rounded-md border-2 border-grey-200 bg-gray-200 p-1.5 text-grey-600;
+  @apply mt-1 flex items-center rounded-md border border-grey-300 bg-gray-200 p-1.5 text-grey-600;
+}
+
+.m_input:focus-visible,
+.m_input:focus {
+  @apply outline-primary-400;
+  outline-width: 1.5px;
+  outline-style: solid;
 }
 
 .m_input::placeholder {
   @apply text-sm;
+}
+
+.m_input:hover {
+  @apply border border-primary-400;
 }
 
 .form_btn {

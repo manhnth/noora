@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { signup } from "./action";
 
 export default function Signup() {
   return (
@@ -10,20 +9,7 @@ export default function Signup() {
         Login
       </div>
 
-      <form className="form" action={signup}>
-        <div className="form_input">
-          <label className="form_lbl" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="m_input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
+      <form className="form" action={""}>
         <div className="form_input">
           <label className="form_lbl" htmlFor="username">
             Username
@@ -51,7 +37,7 @@ export default function Signup() {
           />
         </div>
         <button className="form_btn" type="submit">
-          Sign up
+          Login
         </button>
         <div className="mt-6 flex justify-center text-sm font-medium text-grey-500">
           Have already an account?
