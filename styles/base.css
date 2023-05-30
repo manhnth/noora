@@ -10,11 +10,11 @@
   --grey-8: #fafafa;
   --grey-9: #fff;
 
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
+  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue",
+    "Helvetica", sans-serif;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --hover: rgba(255, 255, 255, 0.075);
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);

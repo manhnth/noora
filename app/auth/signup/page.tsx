@@ -1,14 +1,9 @@
 "use client";
 
+import Link from "next/link";
 // import { useEffect } from 'react';
 
 import { signup } from "./action";
-
-// export async function signup(data: FormData) {
-//   'use server';
-
-//   console.log(data);
-// }
 
 export default function Signup() {
   return (
@@ -53,8 +48,13 @@ export default function Signup() {
         />
       </div>
       <button className="form_btn" type="submit">
-        Add to Cart
+        Sign up
       </button>
+      <div>
+        <Link href="/auth/login">
+          <span className="text-grey-600">Already have an account?</span>
+        </Link>
+      </div>
     </form>
   );
 }
