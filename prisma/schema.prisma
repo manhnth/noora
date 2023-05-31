@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+
+datasource db {
+  provider = "mongodb"
+  url = env("DATABASE_URL")
+  // directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  // url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  // shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model User {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  email String  @unique
+  name  String?
+}

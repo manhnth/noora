@@ -6,11 +6,9 @@ import { signup } from "./action";
 export default function Signup() {
   return (
     <div className="w-80 rounded-md bg-white p-6">
-      <div className="flex justify-center text-lg font-semibold text-grey-500">
-        Login
-      </div>
+      <div className="flex justify-center text-lg font-medium">Sign up</div>
 
-      <form className="form" action={signup}>
+      <form className="form mt-3" action={signup}>
         <div className="form_input">
           <label className="form_lbl" htmlFor="email">
             Email
@@ -24,6 +22,7 @@ export default function Signup() {
             required
           />
         </div>
+
         <div className="form_input">
           <label className="form_lbl" htmlFor="username">
             Username
@@ -37,6 +36,7 @@ export default function Signup() {
             required
           />
         </div>
+
         <div className="form_input">
           <label className="form_lbl" htmlFor="password">
             Password
@@ -50,10 +50,12 @@ export default function Signup() {
             required
           />
         </div>
+
         <button className="form_btn" type="submit">
           Sign up
         </button>
-        <div className="mt-6 flex justify-center text-sm font-medium text-grey-500">
+
+        <div className="form_more">
           Have already an account?
           <Link href="/auth/login">
             <span className="ml-1 font-semibold text-primary-500">

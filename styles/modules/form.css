@@ -11,7 +11,7 @@
 }
 
 .m_input {
-  @apply mt-1 flex items-center rounded-md border border-grey-300 bg-gray-200 p-1.5 text-grey-600;
+  @apply mt-1 flex items-center rounded-md border border-grey-300 bg-gray-200 p-1.5 text-sm text-grey-800;
 }
 
 .m_input:focus-visible,
@@ -37,4 +37,8 @@
 .form_btn:hover {
   @apply bg-primary-700 !important;
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+}
+
+.form_more {
+  @apply mt-6 flex items-center justify-center text-sm text-grey-500;
 }

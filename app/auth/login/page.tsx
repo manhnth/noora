@@ -2,14 +2,12 @@
 
 import Link from "next/link";
 
-export default function Signup() {
+export default function Login() {
   return (
-    <div className="w-80 rounded-md bg-white p-6">
-      <div className="flex justify-center text-lg font-semibold text-grey-500">
-        Login
-      </div>
+    <div className="w-80 rounded-md bg-white p-6 font-medium">
+      <div className="flex justify-center text-lg">Login</div>
 
-      <form className="form" action={""}>
+      <form className="form mt-3" action={""}>
         <div className="form_input">
           <label className="form_lbl" htmlFor="username">
             Username
@@ -23,6 +21,7 @@ export default function Signup() {
             required
           />
         </div>
+
         <div className="form_input">
           <label className="form_lbl" htmlFor="password">
             Password
@@ -36,15 +35,15 @@ export default function Signup() {
             required
           />
         </div>
+
         <button className="form_btn" type="submit">
           Login
         </button>
-        <div className="mt-6 flex justify-center text-sm font-medium text-grey-500">
-          Have already an account?
-          <Link href="/auth/login">
-            <span className="ml-1 font-semibold text-primary-500">
-              Login here
-            </span>
+
+        <div className="form_more justify-between px-4 font-semibold">
+          <Link href="/auth/repasswd">Forgot password?</Link>
+          <Link href="/auth/signup">
+            <span className="ml-1 font-semibold text-primary-500">Sign up</span>
           </Link>
         </div>
       </form>

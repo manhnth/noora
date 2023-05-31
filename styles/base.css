@@ -19,7 +19,6 @@ html[data-theme="dark"] {
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);
   --selection: var(--purple);
-  --text-base: #d7dadc;
   --text-primary: white;
   --text-secondary: white;
 
@@ -33,6 +32,22 @@ html[data-theme="dark"] {
   --grey-7: #333333;
   --grey-8: #151516;
   --grey-9: #000;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --text-base-color: #404040;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 *,
@@ -49,30 +64,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-x: none;
+  color: var(--text-base-color);
 }
 
 body {
-  position: relative;
-  min-height: 100%;
-  margin: 0;
-}
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
   background: linear-gradient(
       to bottom,
       transparent,
@@ -80,3 +76,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* body {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+} */
