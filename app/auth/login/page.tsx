@@ -2,7 +2,24 @@
 
 import Link from "next/link";
 
+async function getData() {
+  const res = await fetch("/api/auth/login");
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    // throw new Error("Failed to fetch data");
+  }
+
+  console.log("here", res);
+
+  // return res.json();
+}
+
 export default function Login() {
+  getData();
   return (
     <div className="w-80 rounded-md bg-white p-6 font-medium">
       <div className="flex justify-center text-lg">Login</div>
