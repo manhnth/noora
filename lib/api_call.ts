@@ -2,12 +2,13 @@ type Fetch = (url: RequestInfo, options?: RequestInit) => Promise<Response>;
 
 export class APIError extends Error {
   status: number;
-  details?: string;
+  errMsg: any;
 
   constructor(message: string, status: number, details?: string) {
     super(message);
+
     this.status = status;
-    this.details = details;
+    this.errMsg = message;
   }
 }
 
@@ -21,7 +22,7 @@ export const do_fetch = async (
   const data = type.includes('json') ? await resp.json() : await resp.text();
 
   if (resp.status < 300) return data;
-  if (resp.status > 308) throw new APIError('dfdkfk', resp.status);
+  if (resp.status > 308) throw new APIError(data.error, resp.status);
 };
 
 type ReqBody = Record<string, any> | string;

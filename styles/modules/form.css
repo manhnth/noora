@@ -34,7 +34,7 @@
 }
 
 .form_msg.-err {
-  @apply border-danger-400 bg-danger-100 text-danger-700;
+  @apply border-danger-400 bg-danger-100 text-sm text-danger-700;
 }
 
 .form_btn {

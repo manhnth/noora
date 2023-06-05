@@ -1,45 +1,29 @@
 'use client';
 
-import { Spinner } from '@/gui/atoms';
 import Link from 'next/link';
-import { useState, useTransition } from 'react';
+import { useTransition, useState } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
+import { Spinner } from '@/gui/atoms';
 
-export default function SignupForm() {
+export default function LoginForm() {
   let [isPending, startTransition] = useTransition();
   let [err, setError] = useState('');
 
   const handleSubmit = async (formData: FormData) => {
     const data = convertFormData(formData);
     console.log('form data', formData, 'data', data);
-    const error = await post_form('/api/auth/signup', data);
+    const error = await post_form('/api/auth/login', data);
 
     error ? setError(error) : return_back();
   };
-
   return (
-    <div className="w-80 rounded-md bg-white p-6">
-      <div className="flex justify-center text-lg font-medium">Sign up</div>
+    <div className="w-80 rounded-md bg-white p-6 font-medium">
+      <div className="flex justify-center text-lg">Login</div>
 
       <form
         className="form mt-3"
-        // onSubmit={(e) => e.preventDefault(}
         action={(formData) => startTransition(() => handleSubmit(formData))}
       >
-        <div className="form_input">
-          <label className="form_lbl" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="m_input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-
         <div className="form_input">
           <label className="form_lbl" htmlFor="username">
             Username
@@ -68,8 +52,6 @@ export default function SignupForm() {
           />
         </div>
 
-        {err && <div className="form_msg -err">{err}</div>}
-
         <button className="form_btn" type="submit">
           {isPending ? (
             // <div className="h-6 w-6 animate-spin rounded-full border-4 border-grey-300 border-t-grey-50"></div>
@@ -79,12 +61,10 @@ export default function SignupForm() {
           )}
         </button>
 
-        <div className="form_more">
-          Have already an account?
-          <Link href="/auth/login">
-            <span className="ml-1 font-semibold text-primary-500">
-              Login here
-            </span>
+        <div className="form_more justify-between px-4 font-semibold">
+          <Link href="/auth/repasswd">Forgot password?</Link>
+          <Link href="/auth/signup">
+            <span className="ml-1 font-semibold text-primary-500">Sign up</span>
           </Link>
         </div>
       </form>

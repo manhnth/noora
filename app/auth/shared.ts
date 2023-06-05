@@ -7,8 +7,7 @@ export const post_form = async (url: string, params: Params) => {
     await api_call(url, params, 'POST');
     return;
   } catch (ex: any) {
-    console.log(ex);
-    return ex.body?.message || 'unknown error';
+    return ex.errMsg || 'unknown error';
   }
 };
 
