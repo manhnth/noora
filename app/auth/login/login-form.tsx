@@ -52,6 +52,8 @@ export default function LoginForm() {
           />
         </div>
 
+        {err && <div className="form_msg -err">{err}</div>}
+
         <button className="form_btn" type="submit">
           {isPending ? (
             // <div className="h-6 w-6 animate-spin rounded-full border-4 border-grey-300 border-t-grey-50"></div>

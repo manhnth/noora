@@ -2,20 +2,30 @@
 
 import { Spinner } from '@/gui/atoms';
 import Link from 'next/link';
-import { useState, useTransition } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
 
 export default function SignupForm() {
   let [isPending, startTransition] = useTransition();
   let [err, setError] = useState('');
+  const abortControllerRef = useRef<AbortController>();
 
   const handleSubmit = async (formData: FormData) => {
+    abortControllerRef.current = new AbortController();
+
     const data = convertFormData(formData);
-    console.log('form data', formData, 'data', data);
     const error = await post_form('/api/auth/signup', data);
 
     error ? setError(error) : return_back();
   };
+
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   return (
     <div className="w-80 rounded-md bg-white p-6">
@@ -23,7 +33,6 @@ export default function SignupForm() {
 
       <form
         className="form mt-3"
-        // onSubmit={(e) => e.preventDefault(}
         action={(formData) => startTransition(() => handleSubmit(formData))}
       >
         <div className="form_input">

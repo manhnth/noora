@@ -1,4 +1,4 @@
-import { signup } from '@/server/handlers/auth';
+import { signup } from '@/server/handlers/auth.ctrl';
 import { createHandler, createRouter } from '@/server/next-connect';
 
 const router = createRouter();

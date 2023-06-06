@@ -3,11 +3,16 @@ import { createRouter as _createRouter } from 'next-connect';
 import CustomApiError from './errors/custom-api-error';
 
 export type ApiError = { error: string };
-export type ApiRequest = NextApiRequest & { uid: string };
+export type ApiRequest = NextApiRequest & { uid?: string };
 export type ApiResponse<T = {}> = NextApiResponse<T | ApiError>;
 export type ApiHandler<T = {}> = (
   req: ApiRequest,
-  res: ApiResponse
+  res: ApiResponse<T>
+) => unknown | Promise<unknown>;
+export type ApiMiddleWare<T = {}> = (
+  req: ApiRequest,
+  res: ApiResponse<T>,
+  next: () => Promise<unknown> | unknown
 ) => unknown | Promise<unknown>;
 
 export const createRouter = <T = {}>() =>

@@ -17,6 +17,8 @@ export const do_fetch = async (
   init: RequestInit,
   fetch: Fetch = globalThis.fetch
 ) => {
+  console.log('runnn');
+
   const resp = await fetch(path, init);
   const type = resp.headers.get('content-type') || '';
   const data = type.includes('json') ? await resp.json() : await resp.text();
@@ -24,6 +26,13 @@ export const do_fetch = async (
   if (resp.status < 300) return data;
   if (resp.status > 308) throw new APIError(data.error, resp.status);
 };
+
+export function api_get<T>(
+  path: string,
+  fetch: Fetch = globalThis.fetch
+): Promise<T> {
+  return do_fetch(path, { method: 'GET' }, fetch);
+}
 
 type ReqBody = Record<string, any> | string;
 const json_headers = { 'Content-Type': 'application/json' };

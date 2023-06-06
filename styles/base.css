@@ -10,11 +10,11 @@
   --grey-8: #fafafa;
   --grey-9: #fff;
 
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue",
-    "Helvetica", sans-serif;
+  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+    'Helvetica', sans-serif;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --hover: rgba(255, 255, 255, 0.075);
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);
@@ -36,8 +36,7 @@ html[data-theme="dark"] {
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-color: #e5e7eb;
 
   --text-base-color: #404040;
 }
@@ -45,8 +44,9 @@ html[data-theme="dark"] {
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --bg-color: #1a1a1b;
+
+    --text-base-color: rgba(255, 255, 255, 0.81);
   }
 }
 
@@ -69,12 +69,7 @@ body {
 
 body {
   /* color: rgb(var(--foreground-rgb)); */
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--bg-color);
 }
 
 /* body {

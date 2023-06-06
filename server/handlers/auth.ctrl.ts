@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { ApiHandler } from '@/server/next-connect';
-import { UserLogin, UserRegister } from '@/types/user';
+import { UserLogin, UserRegister } from '@/types/user.type';
 import { genSalt, hash, compare } from 'bcrypt';
 import CustomApiError from '../errors/custom-api-error';
 import { setCookie } from 'nookies';
@@ -30,8 +30,8 @@ export const signup: ApiHandler = async (req, res) => {
 
   if (!createdUser) throw new CustomApiError(500, 'Something went wrong!');
 
-  setCookie({ res }, 'uid', createdUser.id, {
-    name: 'uid',
+  setCookie({ res }, 'session', createdUser.id, {
+    name: 'session',
     value: createdUser.id,
     maxAge: COOKIES_AGE,
     httpOnly: true,
@@ -57,8 +57,8 @@ export const login: ApiHandler = async (req, res) => {
   if (!isPasswordMatched)
     throw new CustomApiError(401, 'Invalid authentication!');
 
-  setCookie({ res }, 'uid', user.id, {
-    name: 'uid',
+  setCookie({ res }, 'session', user.id, {
+    name: 'session',
     value: user.id,
     maxAge: COOKIES_AGE,
     httpOnly: true,
@@ -69,6 +69,6 @@ export const login: ApiHandler = async (req, res) => {
 };
 
 export const logout: ApiHandler = async (_, res) => {
-  setCookie({ res }, 'uid', '', { maxAge: 0, path: '/' });
+  setCookie({ res }, 'session', '', { maxAge: 0, path: '/' });
   res.json({});
 };

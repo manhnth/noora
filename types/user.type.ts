@@ -8,3 +8,8 @@ export type UserRegister = {
   username: string;
   password: string;
 } & ReadableStream<Uint8Array>;
+
+export type UserClient = {
+  email: string;
+  username: string;
+};
