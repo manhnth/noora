@@ -29,9 +29,10 @@ export const do_fetch = async (
 
 export function api_get<T>(
   path: string,
+  tags: string[] = [''],
   fetch: Fetch = globalThis.fetch
 ): Promise<T> {
-  return do_fetch(path, { method: 'GET' }, fetch);
+  return do_fetch(path, { method: 'GET', next: { tags: [...tags] } }, fetch);
 }
 
 type ReqBody = Record<string, any> | string;

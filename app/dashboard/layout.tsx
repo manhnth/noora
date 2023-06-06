@@ -13,7 +13,9 @@ export default function MainLayout({
   return (
     <div id="dashboard" className="flex [&>*]:h-screen">
       <Toolbar />
-      {children}
+      <div id="content-wrapper" className="flex-grow">
+        {children}
+      </div>
     </div>
   );
 }
