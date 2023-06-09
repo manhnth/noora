@@ -1,0 +1,36 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --bg-color: #e5e7eb;
+
+  --text-base-color: #404040;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --bg-color: #1a1a1b;
+
+    --text-base-color: rgba(255, 255, 255, 0.81);
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  touch-action: manipulation;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-x: none;
+  color: var(--text-base-color);
+}
+
+body {
+  background: var(--bg-color);
+}

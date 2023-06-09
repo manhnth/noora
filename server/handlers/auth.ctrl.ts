@@ -50,6 +50,9 @@ export const login: ApiHandler = async (req, res) => {
     },
   });
 
+  await res.revalidate('/api/auth/login');
+  console.log('revalidate');
+
   if (!user) throw new CustomApiError(404, `username not found!`);
 
   const isPasswordMatched = compare(password, user.password);
