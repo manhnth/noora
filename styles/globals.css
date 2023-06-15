@@ -1,1 +1,7 @@
-@import './_fw.css';
+@import 'tailwindcss/base';
+@import './_base.css';
+
+@import 'tailwindcss/components';
+@import './comps/form.css';
+
+@import 'tailwindcss/utilities';

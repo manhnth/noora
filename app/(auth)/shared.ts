@@ -19,9 +19,7 @@ export const return_back = () => {
 };
 
 export function convertFormData(data: FormData): Params {
-  // Tạo một mảng từ các cặp key-value trong formData
   const entries = Array.from(data.entries());
 
-  // Sử dụng Object.fromEntries để chuyển đổi mảng thành đối tượng
   return Object.fromEntries(entries) as Params;
 }

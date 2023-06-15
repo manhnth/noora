@@ -1,7 +1,9 @@
 'use client';
 
-import { Spinner } from '@/gui/atoms';
 import Link from 'next/link';
+import Image from 'next/image';
+import appLogo from '@/assets/app-logo.png';
+import { Spinner } from '@/gui/atoms';
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
 
@@ -14,6 +16,7 @@ export default function SignupForm() {
     abortControllerRef.current = new AbortController();
 
     const data = convertFormData(formData);
+
     const error = await post_form('/api/auth/signup', data);
 
     error ? setError(error) : return_back();
@@ -29,10 +32,13 @@ export default function SignupForm() {
 
   return (
     <div className="w-80 rounded-md bg-white p-6">
-      <div className="flex justify-center text-lg font-medium">Sign up</div>
+      <div className="flex items-center justify-center gap-2 text-lg font-semibold text-grey-600">
+        <Image src={appLogo} className="logo reddit" alt="" width={48} />
+        <span>BearNote</span>
+      </div>
 
       <form
-        className="form mt-3"
+        className="form mt-5"
         action={(formData) => startTransition(() => handleSubmit(formData))}
       >
         <div className="form_input">
@@ -72,7 +78,7 @@ export default function SignupForm() {
             type="password"
             name="password"
             id="password"
-            placeholder="******"
+            placeholder="*********"
             required
           />
         </div>
@@ -88,9 +94,9 @@ export default function SignupForm() {
           )}
         </button>
 
-        <div className="form_more">
+        <div className="form_more font-medium">
           Have already an account?
-          <Link href="/auth/login">
+          <Link href="/login">
             <span className="ml-1 font-semibold text-primary-500">
               Login here
             </span>

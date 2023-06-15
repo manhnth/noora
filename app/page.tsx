@@ -6,6 +6,7 @@ export default async function Page() {
 
   console.log('user', user);
 
-  if (!user) redirect('/auth/signup');
-  redirect('/dashboard');
+  if (!user) {
+    redirect('/login');
+  } else redirect('/dashboard');
 }

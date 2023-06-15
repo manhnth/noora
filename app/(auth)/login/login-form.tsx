@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTransition, useState } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
 import { Spinner } from '@/gui/atoms';
+import appLogo from '@/assets/app-logo.png';
 
 export default function LoginForm() {
   let [isPending, startTransition] = useTransition();
@@ -11,17 +13,21 @@ export default function LoginForm() {
 
   const handleSubmit = async (formData: FormData) => {
     const data = convertFormData(formData);
-    console.log('form data', formData, 'data', data);
+
     const error = await post_form('/api/auth/login', data);
 
     error ? setError(error) : return_back();
   };
+
   return (
     <div className="w-80 rounded-md bg-white p-6 font-medium">
-      <div className="flex justify-center text-lg">Login</div>
+      <div className="flex items-center justify-center gap-2 text-lg font-semibold text-grey-600">
+        <Image src={appLogo} className="logo reddit" alt="" width={48} />
+        <span>BearNote</span>
+      </div>
 
       <form
-        className="form mt-3"
+        className="form mt-5"
         action={(formData) => startTransition(() => handleSubmit(formData))}
       >
         <div className="form_input">
@@ -47,7 +53,7 @@ export default function LoginForm() {
             type="password"
             name="password"
             id="password"
-            placeholder="******"
+            placeholder="*********"
             required
           />
         </div>
@@ -59,13 +65,13 @@ export default function LoginForm() {
             // <div className="h-6 w-6 animate-spin rounded-full border-4 border-grey-300 border-t-grey-50"></div>
             <Spinner />
           ) : (
-            'Sign up'
+            'Login'
           )}
         </button>
 
         <div className="form_more justify-between px-4 font-semibold">
-          <Link href="/auth/repasswd">Forgot password?</Link>
-          <Link href="/auth/signup">
+          <Link href="/repasswd">Forgot password?</Link>
+          <Link href="/signup">
             <span className="ml-1 font-semibold text-primary-500">Sign up</span>
           </Link>
         </div>

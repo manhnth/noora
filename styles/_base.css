@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --bg-color: #e5e7eb;
 
   --text-base-color: #404040;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue,
+    'Open Sans', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
