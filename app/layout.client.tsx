@@ -2,9 +2,6 @@
 
 import { ThemeProvider } from '@/lib/theme-context';
 import '../styles/globals.css';
-import { Inter } from 'next/font/google';
-
-// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,7 +16,6 @@ export default function RootLayoutClient({
   return (
     <ThemeProvider>
       <html lang="en">
-        {/* <body className={inter.className}> */}
         <body>
           <main className="h-screen w-full">{children}</main>
         </body>
