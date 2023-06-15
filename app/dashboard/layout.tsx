@@ -6,12 +6,10 @@ export const metadata = {
 };
 
 export default async function MainLayout({
-
   children,
 }: {
   children: React.ReactNode;
 }) {
-
   const user = await getUser();
   if (!user) return;
   return (
@@ -39,7 +37,6 @@ export default async function MainLayout({
           </div>
         </div>
       </div>
-
     </div>
   );
 }
