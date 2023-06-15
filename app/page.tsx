@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 export default async function Page() {
   const user = await getUser();
 
-  if (!user) redirect('/auth/signup');
-  redirect('/dashboard');
+  if (!user) {
+    redirect('/login');
+  } else redirect('/dashboard');
+
 }

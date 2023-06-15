@@ -10,7 +10,8 @@ export const getUser = cache(async (): Promise<UserClient | undefined> => {
     const sessionCookie = cookies().get('session');
     const uid = sessionCookie?.value;
 
-    const user = await prisma.user.findFirst({ where: { id: uid } });
+    const user = await prisma.user.findUnique({ where: { id: uid } });
+
     if (!user) return undefined;
 
     return exclude_fields(user, ['password', 'id']);

@@ -8,7 +8,8 @@ export class APIError extends Error {
     super(message);
 
     this.status = status;
-    this.errMsg = message;
+    // this.errMsg = message;
+
   }
 }
 
@@ -17,11 +18,11 @@ export const do_fetch = async (
   init: RequestInit,
   fetch: Fetch = globalThis.fetch
 ) => {
-  console.log('runnn');
 
   const resp = await fetch(path, init);
   const type = resp.headers.get('content-type') || '';
   const data = type.includes('json') ? await resp.json() : await resp.text();
+
 
   if (resp.status < 300) return data;
   if (resp.status > 308) throw new APIError(data.error, resp.status);
@@ -29,9 +30,11 @@ export const do_fetch = async (
 
 export function api_get<T>(
   path: string,
+  tags: string[] = [''],
   fetch: Fetch = globalThis.fetch
 ): Promise<T> {
-  return do_fetch(path, { method: 'GET' }, fetch);
+  return do_fetch(path, { method: 'GET', next: { tags: [...tags] } }, fetch);
+
 }
 
 type ReqBody = Record<string, any> | string;
