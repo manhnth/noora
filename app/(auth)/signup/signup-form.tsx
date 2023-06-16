@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import appLogo from '@/assets/app-logo.png';
-import { Spinner } from '@/gui/atoms';
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
 import cx from '@/lib/classix';
+import { Spinner } from '@/app/gui/atoms';
 
 export default function SignupForm() {
   let [isPending, startTransition] = useTransition();

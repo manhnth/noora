@@ -12,7 +12,7 @@ export default function RootLayoutClient({
     <ThemeProvider>
       <html lang="en">
         <body>
-          <div id="_app" className="h-screen w-full">
+          <div id="_app" className="h-screen w-screen">
             {children}
           </div>
         </body>

@@ -4,9 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTransition, useState } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
-import { Spinner } from '@/gui/atoms';
+
 import appLogo from '@/assets/app-logo.png';
 import cx from '@/lib/classix';
+import { Spinner } from '@/app/gui/atoms';
 
 export default function LoginForm() {
   let [isPending, startTransition] = useTransition();

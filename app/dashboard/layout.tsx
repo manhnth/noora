@@ -1,4 +1,5 @@
 import { getUser } from '@/server/rsc/user.rsc';
+import Footer from './layout-footer.client';
 
 export const metadata = {
   title: 'Dashboard',
@@ -12,28 +13,13 @@ export default async function MainLayout({
 }) {
   const user = await getUser();
   if (!user) return;
+
   return (
-    <div id="dashboard" className="flex h-screen justify-center">
-      <div id="content-wrapper" className="relative flex w-full max-w-[640px]">
+    <div id="dashboard" className="h-screen w-full">
+      <main className="flex max-h-screen justify-center overflow-y-clip">
         {children}
-        <div
-          id="toolbar"
-          className="absolute bottom-0 flex w-full border border-b-0 p-4 font-light dark:border-grey-700 dark:bg-grey-800 [&>*]:flex [&>*]:w-1/4 [&>*]:justify-center"
-        >
-          <div>
-            <span>Note</span>
-          </div>
-          <div>
-            <span>Writing</span>
-          </div>
-          <div>
-            <span>Reading</span>
-          </div>
-          <div>
-            <span>Resource</span>
-          </div>
-        </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

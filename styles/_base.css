@@ -2,7 +2,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --bg-color: #e5e7eb;
+  --bg-color: #ffff;
 
   --text-base-color: #404040;
 
@@ -13,7 +13,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --bg-color: #1a1a1b;
+    --bg-color: #030303;
 
     --text-base-color: rgba(255, 255, 255, 0.81);
   }
