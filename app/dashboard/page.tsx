@@ -4,5 +4,11 @@ import { redirect } from 'next/navigation';
 export default async function Page() {
   const user = await getUser();
 
-  if (user) redirect('/dashboard/reading');
+  return (
+    <div className="wavy-div">
+      <div className="content">hello</div>
+    </div>
+  );
+
+  // if (user) redirect('/dashboard/reading');
 }

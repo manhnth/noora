@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { ApiHandler } from '../next-connect';
 import CustomApiError from '../errors/custom-api-error';
-import { exclude_fields } from '../utls/formatData';
+import { exclude_fields } from '../utils/formatData';
 
 export const getUser: ApiHandler = async (req, res) => {
   const userId = req.uid;

@@ -2,7 +2,7 @@ import 'server-only';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 import { prisma } from '@/lib/prisma';
-import { exclude_fields } from '../utls/formatData';
+import { exclude_fields } from '../utils/formatData';
 import { UserClient } from '@/types/user.type';
 
 export const getUser = cache(async (): Promise<UserClient | undefined> => {

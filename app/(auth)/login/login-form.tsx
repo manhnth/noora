@@ -6,6 +6,7 @@ import { useTransition, useState } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
 import { Spinner } from '@/gui/atoms';
 import appLogo from '@/assets/app-logo.png';
+import cx from '@/lib/classix';
 
 export default function LoginForm() {
   let [isPending, startTransition] = useTransition();
@@ -60,22 +61,19 @@ export default function LoginForm() {
 
         {err && <div className="form_msg -err">{err}</div>}
 
-        <button className="form_btn" type="submit">
-          {isPending ? (
-            // <div className="h-6 w-6 animate-spin rounded-full border-4 border-grey-300 border-t-grey-50"></div>
-            <Spinner />
-          ) : (
-            'Login'
-          )}
+        <button
+          className={cx('form_btn', isPending && 'pointer-events-none')}
+          type="submit"
+        >
+          {isPending ? <Spinner /> : 'Login'}
         </button>
-
-        <div className="form_more justify-between px-4 font-semibold">
-          <Link href="/repasswd">Forgot password?</Link>
-          <Link href="/signup">
-            <span className="ml-1 font-semibold text-primary-500">Sign up</span>
-          </Link>
-        </div>
       </form>
+      <div className="form_more justify-between px-4 font-semibold">
+        <Link href="/repasswd">Forgot password?</Link>
+        <Link href="/signup">
+          <span className="ml-1 font-semibold text-primary-500">Sign up</span>
+        </Link>
+      </div>
     </div>
   );
 }

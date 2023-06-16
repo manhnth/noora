@@ -6,6 +6,7 @@ import appLogo from '@/assets/app-logo.png';
 import { Spinner } from '@/gui/atoms';
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { convertFormData, post_form, return_back } from '../shared';
+import cx from '@/lib/classix';
 
 export default function SignupForm() {
   let [isPending, startTransition] = useTransition();
@@ -85,13 +86,11 @@ export default function SignupForm() {
 
         {err && <div className="form_msg -err">{err}</div>}
 
-        <button className="form_btn" type="submit">
-          {isPending ? (
-            // <div className="h-6 w-6 animate-spin rounded-full border-4 border-grey-300 border-t-grey-50"></div>
-            <Spinner />
-          ) : (
-            'Sign up'
-          )}
+        <button
+          className={cx('form_btn', isPending ? 'pointer-events-none' : '')}
+          type="submit"
+        >
+          {isPending ? <Spinner /> : 'Sign up'}
         </button>
 
         <div className="form_more font-medium">

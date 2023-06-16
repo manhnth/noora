@@ -52,7 +52,7 @@ export const login: ApiHandler = async (req, res) => {
 
   if (!user) throw new CustomApiError(404, `username not found!`);
 
-  const isPasswordMatched = compare(password, user.password);
+  const isPasswordMatched = await compare(password, user.password);
 
   if (!isPasswordMatched)
     throw new CustomApiError(401, 'Invalid authentication!');

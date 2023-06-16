@@ -7,5 +7,4 @@ export default async function Page() {
   if (!user) {
     redirect('/login');
   } else redirect('/dashboard');
-
 }
